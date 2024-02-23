@@ -15,8 +15,8 @@ a {
 	margin: auto;
 }
 
-@mixin easeOut {
-	transition: all ease-out 0.5s;
+@mixin transition {
+	transition: all ease-in-out 0.6s;
 }
 
 h1 {
@@ -55,7 +55,7 @@ h6 {
 	font-family: "__Plus_Jakarta_Sans_65517a",
 		"__Plus_Jakarta_Sans_Fallback_65517a";
 	border-radius: 100px;
-	@include easeOut();
+	@include transition();
 
 	&-primary {
 		background-color: $primary-color;
@@ -71,4 +71,23 @@ h6 {
 			color: $black-color;
 		}
 	}
+
+	&-white-outline {
+		border: 1px solid $white-color;
+		background-color: transparent;
+		color: $white-color;
+
+		&:hover {
+			background-color: $light-color;
+			color: $primary-color;
+		}
+	}
+}
+
+.line {
+	background-color: $light-grey-color;
+	padding: 1px 0;
+	width: 60%;
+	margin: 0 auto;
+	border-radius: $radius;
 }

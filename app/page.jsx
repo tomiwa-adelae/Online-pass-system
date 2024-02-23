@@ -1,5 +1,6 @@
 import React from "react";
 import { Montagu_Slab } from "next/font/google";
+import Link from "next/link";
 
 const montaguSlab = Montagu_Slab({
 	weight: ["400"],
@@ -16,9 +17,9 @@ const Home = () => {
 						alt="Passify with the P as the logo"
 					/>
 				</div>
-				<a href="./login" className="btn btn-white">
+				<Link href="./auth" className="btn btn-white">
 					Join
-				</a>
+				</Link>
 			</header>
 			<main>
 				<div className="container">
@@ -32,9 +33,9 @@ const Home = () => {
 						innovative solutions. Discover the future of gate pass
 						management today!
 					</p>
-					<a href="./login" className="btn btn-white">
+					<Link href="./auth" className="btn btn-white">
 						Join
-					</a>
+					</Link>
 				</div>
 			</main>
 		</div>

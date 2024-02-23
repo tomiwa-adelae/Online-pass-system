@@ -1,7 +1,9 @@
 @import "config";
 @import "utilities";
 @import "homepage";
-@import "loginpage";
+@import "authpage";
+@import "resetpasswordpage";
+@import "updatepasswordpage";
 
 * {
 	margin: 0;

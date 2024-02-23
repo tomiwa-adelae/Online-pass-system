@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const page = () => {
 	const [showRegisterForm, setshowRegisterForm] = useState(false);
+
+	const [showPassword, setShowPassword] = useState(false);
 
 	return (
 		<div className="loginpage">
@@ -59,9 +62,19 @@ const page = () => {
 								<label htmlFor="faculty">Faculty</label>
 								<input id="faculty" type="text" />
 							</div>
-							<div>
+							<div className="password">
 								<label htmlFor="password">Password</label>
-								<input type="password" />
+								<input
+									type={showPassword ? "text" : "password"}
+									id="password"
+								/>
+								<span
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+								>
+									{showPassword ? <FaEyeSlash /> : <FaEye />}
+								</span>
 							</div>
 							<div>
 								<button className="btn btn-primary">
@@ -96,9 +109,19 @@ const page = () => {
 								<label htmlFor="email">Email address</label>
 								<input id="email" type="email" />
 							</div>
-							<div>
+							<div className="password">
 								<label htmlFor="password">Password</label>
-								<input type="password" id="password" />
+								<input
+									type={showPassword ? "text" : "password"}
+									id="password"
+								/>
+								<span
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+								>
+									{showPassword ? <FaEyeSlash /> : <FaEye />}
+								</span>
 							</div>
 							<div>
 								<button className="btn btn-primary">
@@ -108,7 +131,9 @@ const page = () => {
 						</div>
 						<div className="line"></div>
 						<div>
-							<Link href="">Reset your password</Link>
+							<Link href="/resetpassword">
+								Reset your password
+							</Link>
 						</div>
 					</form>
 				</div>

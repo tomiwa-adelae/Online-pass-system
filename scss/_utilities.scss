@@ -7,6 +7,11 @@ img {
 
 a {
 	text-decoration: none;
+	color: $black-color;
+}
+
+ul {
+	list-style: none;
 }
 
 .container {
@@ -82,6 +87,28 @@ h6 {
 			color: $primary-color;
 		}
 	}
+
+	&-grey-outline {
+		border: 1px solid $grey-color;
+		background-color: transparent;
+		color: $grey-color;
+
+		&:hover {
+			background-color: $light-grey-color;
+			color: $grey-color;
+		}
+	}
+
+	&-primary-outline {
+		border: 1px solid $primary-color;
+		background-color: transparent;
+		color: $primary-color;
+
+		&:hover {
+			background-color: $light-color;
+			color: $primary-color;
+		}
+	}
 }
 
 .line {
@@ -90,4 +117,70 @@ h6 {
 	width: 60%;
 	margin: 0 auto;
 	border-radius: $radius;
+}
+
+form {
+	background-color: $white-color;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	// padding: 0 2rem;
+	height: 100%;
+
+	div {
+		// background-color: darksalmon;
+		width: 100%;
+		margin: 0.1rem 0;
+		label {
+			font-size: 0.7rem;
+		}
+		input {
+			font-family: "__Plus_Jakarta_Sans_65517a",
+				"__Plus_Jakarta_Sans_Fallback_65517a";
+			width: 100%;
+			padding: 0.1rem 0 0.3rem 0;
+			font-weight: bold;
+			font-size: 0.8rem;
+			color: $dark-color;
+			border: none;
+			border-bottom: 1px solid $light-grey-color;
+			outline: none;
+			background-color: transparent;
+			@include transition();
+
+			&:focus {
+				border-bottom-color: $primary-color;
+			}
+		}
+	}
+
+	.password {
+		position: relative;
+
+		span {
+			cursor: pointer;
+			position: absolute;
+			top: 95%;
+			color: lighten($grey-color, 10%);
+			right: 0%;
+			transform: translate(0%, -95%);
+
+			border-radius: 100%;
+			@include transition();
+
+			svg {
+				font-size: 1.1rem;
+			}
+
+			&:hover {
+				color: $dark-color;
+			}
+		}
+	}
+
+	button {
+		margin-top: 0.5rem;
+		float: right;
+	}
 }

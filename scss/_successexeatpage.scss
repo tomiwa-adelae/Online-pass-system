@@ -1,0 +1,33 @@
+.successexeatpage {
+	.content {
+		margin: 3rem 0;
+		h4 {
+			margin-bottom: 1rem;
+			text-transform: uppercase;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			// margin-bottom: 10rem;
+
+			svg {
+				font-size: 4rem;
+				margin-right: 1rem;
+				color: $grey-color;
+			}
+		}
+
+		p {
+			width: 70%;
+			margin: 2rem 0;
+		}
+
+		div {
+			display: flex;
+			justify-content: flex-end;
+
+			button {
+				margin-left: 1rem;
+			}
+		}
+	}
+}

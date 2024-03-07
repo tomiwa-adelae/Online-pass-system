@@ -4,6 +4,14 @@
 @import "authpage";
 @import "resetpasswordpage";
 @import "updatepasswordpage";
+@import "dashboardpage";
+@import "getexeatpage";
+@import "successexeatpage";
+@import "exeatdetailspage";
+@import "historypage";
+@import "profilepage";
+@import "editprofilepage";
+@import "changepasswordpage";
 
 * {
 	margin: 0;
@@ -24,13 +32,17 @@ body {
 }
 
 header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 90%;
-	margin: 0 auto;
-	height: 80px;
-	background-color: red;
+	border-bottom: 1px solid $primary-color;
+	box-shadow: rgba($primary-color, 0.24) 0px 3px 8px;
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 90%;
+		margin: 0 auto;
+		height: 80px;
+	}
+	// background-color: red;
 
 	.logo {
 		width: 150px;
@@ -44,4 +56,70 @@ header {
 			opacity: 0.7;
 		}
 	}
+
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		a {
+			font-weight: bold;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			// background-color: greenyellow;
+			padding: 0.5rem;
+			// background-color: red;
+			margin-left: 1rem;
+			@include transition();
+
+			svg {
+				font-size: 1.5rem;
+				margin-right: 0.5rem;
+			}
+
+			&:hover {
+				color: $primary-color;
+				font-weight: bolder;
+			}
+		}
+	}
+}
+
+.recent-history {
+	h4 {
+		text-transform: uppercase;
+		margin-bottom: 3rem;
+	}
+}
+
+.history {
+	// background-color: darkolivegreen;
+	border: 2px dotted $primary-color;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 2rem;
+	border-radius: 20px;
+	margin-bottom: 2rem;
+
+	strong {
+		color: $primary-color;
+	}
+
+	h6 {
+		margin-bottom: 1rem;
+	}
+
+	.status {
+		svg {
+			font-size: 5rem;
+		}
+	}
+}
+
+footer {
+	width: 90%;
+	margin: 0 auto;
+	font-weight: bold;
+	padding: 2rem 0;
 }

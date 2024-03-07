@@ -1,6 +1,6 @@
+import AdminControls from "@/components/AdminControl";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import RecentHistory from "@/components/RecentHistory";
 import {
 	PiUserCircleThin,
 	PiDotsThreeCircleVerticalLight,
@@ -8,7 +8,7 @@ import {
 
 const page = () => {
 	return (
-		<div className="profilepage">
+		<div className="adminprofilepage">
 			<Header />
 			<div className="container">
 				<div className="user-head">
@@ -22,7 +22,7 @@ const page = () => {
 					</div>
 				</div>
 				<div className="line"></div>
-				<RecentHistory />
+				<AdminControls />
 			</div>
 			<Footer />
 		</div>

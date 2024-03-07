@@ -1,0 +1,27 @@
+.admineditprofilepage {
+	.content {
+		padding: 3rem 0;
+		h4 {
+			text-transform: uppercase;
+			text-align: center;
+		}
+
+		.profile-picture {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			.user {
+				font-size: 10rem;
+				margin-bottom: 1rem;
+			}
+		}
+
+		form {
+			margin-top: 2rem;
+
+			button {
+				margin-left: 1rem;
+			}
+		}
+	}
+}

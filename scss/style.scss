@@ -12,6 +12,16 @@
 @import "profilepage";
 @import "editprofilepage";
 @import "changepasswordpage";
+@import "admindashboardpage";
+@import "adminallrequestspage";
+@import "adminapprovedrequestspage";
+@import "adminrejectedrequestspage";
+@import "adminpendingrequestspage";
+@import "adminallstudentspage";
+@import "adminexeatdetailspage";
+@import "adminprofilepage";
+@import "admineditprofilepage";
+@import "adminstudentpage";
 
 * {
 	margin: 0;
@@ -113,6 +123,34 @@ header {
 	.status {
 		svg {
 			font-size: 5rem;
+		}
+	}
+}
+
+.admincontrol-section {
+	margin: 3rem 0;
+	.boxes {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 2rem;
+		.box {
+			// margin: 2rem 0;
+			border-radius: 20px;
+			text-align: center;
+			border: 2px dotted $grey-color;
+			padding: 2rem;
+
+			svg {
+				display: block;
+				text-align: center;
+				// background-color: red;
+				width: 100%;
+				font-size: 3rem;
+			}
+
+			button {
+				margin: 2rem 0;
+			}
 		}
 	}
 }

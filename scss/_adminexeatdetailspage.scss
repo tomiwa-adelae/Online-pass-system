@@ -1,0 +1,38 @@
+.adminexeatdetailspage {
+	.content {
+		margin: 3rem 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+
+		.details {
+			h4 {
+				margin-bottom: 2rem;
+				text-transform: uppercase;
+			}
+
+			h6 {
+				margin-bottom: 1rem;
+
+				strong {
+					color: $primary-color;
+				}
+			}
+
+			button {
+				margin-top: 2rem;
+				margin-right: 1rem;
+			}
+		}
+
+		.status {
+			// background-color: red;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			img {
+				width: 100%;
+				height: 300px;
+			}
+		}
+	}
+}

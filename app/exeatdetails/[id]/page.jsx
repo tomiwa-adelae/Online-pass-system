@@ -133,6 +133,12 @@ const page = () => {
 							</li>
 							<li>
 								<h6>
+									<strong>Hostel:</strong>
+									{pass?.hostel}
+								</h6>
+							</li>
+							<li>
+								<h6>
 									<strong>Reason:</strong>
 									{pass?.reason}
 								</h6>

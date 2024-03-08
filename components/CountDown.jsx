@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { GiPartyPopper } from "react-icons/gi";
 
-const CountDown = () => {
+const CountDown = ({ admin }) => {
 	return (
 		<div className="count-down-section">
 			<div className="intro">
@@ -28,9 +28,9 @@ const CountDown = () => {
 				</div>
 			</div>
 			<div className="get-pass">
-				<Link href="/getexeat">
+				<Link href={admin ? "/adminpendingrequests" : "/getexeat"}>
 					<div className="btn btn-primary-outline">
-						Get Exeat Pass
+						{admin ? "Check out pending request" : "Get exeat pass"}
 					</div>
 				</Link>
 			</div>

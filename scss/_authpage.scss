@@ -16,7 +16,7 @@
 		overflow: hidden;
 		width: 1000px;
 		max-width: 100%;
-		min-height: 580px;
+		min-height: 630px;
 
 		.form-container {
 			position: absolute;
@@ -70,7 +70,8 @@
 				label {
 					font-size: 0.7rem;
 				}
-				input {
+				input,
+				select {
 					font-family: "__Plus_Jakarta_Sans_65517a",
 						"__Plus_Jakarta_Sans_Fallback_65517a";
 					width: 100%;

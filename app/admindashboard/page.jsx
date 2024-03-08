@@ -10,7 +10,7 @@ const page = () => {
 		<div className="admindashboardpage">
 			<Header />
 			<div className="container">
-				<CountDown />
+				<CountDown admin={true} />
 				<AdminControls />
 				{/* <RecentHistory /> */}
 			</div>

@@ -95,9 +95,67 @@ header {
 	}
 }
 
+.count-down-section {
+	.intro {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		// background-color: grey;
+		margin-top: 3rem;
+
+		h4 {
+			margin: 0 1rem;
+			// text-transform: uppercase;
+		}
+
+		svg {
+			font-size: 2rem;
+			color: $primary-color;
+		}
+	}
+
+	.count-down {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		width: 70%;
+		margin: 3rem auto;
+
+		div {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			flex-direction: column;
+			padding: 2rem;
+			border: 2px dotted $primary-color;
+			border-radius: 10px;
+
+			span {
+				display: block;
+				font-size: 1.5rem;
+				font-weight: bold;
+			}
+		}
+
+		.days {
+			background-color: $primary-color;
+			color: #ffffff;
+		}
+	}
+
+	.get-pass {
+		text-align: center;
+	}
+
+	.line {
+		margin: 3rem auto;
+		width: 100%;
+	}
+}
+
 .recent-history {
 	h4 {
-		text-transform: uppercase;
+		// text-transform: uppercase;
 		margin-bottom: 3rem;
 	}
 }

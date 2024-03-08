@@ -12,10 +12,12 @@ const Home = () => {
 		<div className="homepage">
 			<header>
 				<div className="logo">
-					<img
-						src="./passify-logo-white.png"
-						alt="Passify with the P as the logo"
-					/>
+					<Link href="/">
+						<img
+							src="./passify-logo-white.png"
+							alt="Passify with the P as the logo"
+						/>
+					</Link>
 				</div>
 				<Link href="./auth" className="btn btn-white">
 					Join

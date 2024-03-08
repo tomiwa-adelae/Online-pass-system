@@ -1,6 +1,7 @@
 "use client";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Link from "next/link";
 
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -76,9 +77,11 @@ const page = () => {
 							<button className="btn btn-primary">
 								Save changes
 							</button>
-							<button className="btn btn-grey-outline">
-								Cancel
-							</button>
+							<Link href="/editprofile">
+								<button className="btn btn-grey-outline">
+									Cancel
+								</button>
+							</Link>
 						</div>
 					</form>
 				</div>

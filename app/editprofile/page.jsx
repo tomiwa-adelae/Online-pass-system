@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Link from "next/link";
 import React from "react";
 import { PiUserCircleThin } from "react-icons/pi";
 
@@ -57,9 +58,11 @@ const page = () => {
 							<button className="btn btn-primary">
 								Save changes
 							</button>
-							<button className="btn btn-grey-outline">
-								Change password
-							</button>
+							<Link href="/changepassword">
+								<button className="btn btn-grey-outline">
+									Change password
+								</button>
+							</Link>
 						</div>
 					</form>
 				</div>

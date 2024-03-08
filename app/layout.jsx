@@ -1,5 +1,6 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "../styles/style.css";
+import Providers from "./provider";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
 	weight: ["400"],
@@ -14,7 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={plusJakartaSans.className}>{children}</body>
+			<body className={plusJakartaSans.className}>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	);
 }

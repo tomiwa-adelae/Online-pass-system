@@ -1,16 +1,86 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { setCredentials } from "../slices/authSlice";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { useLoginMutation, useRegisterMutation } from "../slices/userApiSlice";
+import {
+	DangerAlert,
+	SuccessAlert,
+	WarningAlert,
+} from "@/components/AlertMessage";
+import Loader from "../../components/Loader";
 
 const page = () => {
+	const router = useRouter();
+	const dispatch = useDispatch();
+
 	const [showRegisterForm, setshowRegisterForm] = useState(false);
 
 	const [showPassword, setShowPassword] = useState(false);
 
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [matricNumber, setMatricNumber] = useState("");
+	const [department, setDepartment] = useState("");
+	const [faculty, setFaculty] = useState("");
+	const [password, setPassword] = useState("");
+	const [showError, setShowError] = useState(null);
+
+	const { userInfo } = useSelector((state) => state.auth);
+
+	const [login, { isLoading }] = useLoginMutation();
+	const [register, { isLoading: loadingRegister }] = useRegisterMutation();
+
+	useEffect(() => {
+		if (userInfo) {
+			return router.push("/dashboard");
+		}
+	}, [router, userInfo]);
+
+	const submitLoginHandler = async (e) => {
+		e.preventDefault();
+
+		setShowError(null);
+
+		try {
+			const res = await login({ email, password }).unwrap();
+			dispatch(setCredentials({ ...res }));
+			router.push("/dashboard");
+		} catch (error) {
+			setShowError(error.data.message);
+		}
+	};
+
+	const submitRegisterHandler = async (e) => {
+		e.preventDefault();
+
+		setShowError(null);
+
+		try {
+			const res = await register({
+				name,
+				email,
+				matricNumber,
+				department,
+				faculty,
+				password,
+			}).unwrap();
+			dispatch(setCredentials({ ...res }));
+			router.push("/dashboard");
+		} catch (error) {
+			setShowError(error.data.message);
+		}
+	};
+
 	return (
 		<div className="loginpage">
+			{isLoading && <Loader />}
+			{/* {loadingRegister && <LoadingPage />} */}
+
 			<div
 				className={
 					showRegisterForm
@@ -20,7 +90,7 @@ const page = () => {
 				id="page-container"
 			>
 				<div className="form-container sign-up">
-					<form>
+					<form onSubmit={submitRegisterHandler}>
 						<Link href="/">
 							<img
 								src="./logo-primary.png"
@@ -40,33 +110,89 @@ const page = () => {
 							</strong>
 						</p>
 						<div className="form">
+							{showError && <DangerAlert message={showError} />}
 							<div>
 								<label htmlFor="name">Name</label>
-								<input id="name" type="text" />
+								<input
+									id="name"
+									type="text"
+									value={name}
+									onChange={(e) => setName(e.target.value)}
+								/>
 							</div>
 							<div>
 								<label htmlFor="email">Email address</label>
-								<input type="email" id="email" />
+								<input
+									type="email"
+									id="email"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+								/>
 							</div>
 							<div>
 								<label htmlFor="matriculationNumber">
 									Matriculation/Admission number
 								</label>
-								<input id="matriculationNumber" type="text" />
+								<input
+									id="matriculationNumber"
+									type="text"
+									value={matricNumber}
+									onChange={(e) =>
+										setMatricNumber(e.target.value)
+									}
+								/>
 							</div>
 							<div>
 								<label htmlFor="department">Department</label>
-								<input type="text" id="department" />
+								<select
+									name="department"
+									id="department"
+									value={department}
+									onChange={(e) =>
+										setDepartment(e.target.value)
+									}
+								>
+									<option value="">Select department</option>
+									<option value="Accounting & Finance">
+										Accounting & Finance
+									</option>
+									<option value="Computer science">
+										Computer science
+									</option>
+									<option value="Physics">Physics</option>
+									<option value="English">English</option>
+								</select>
 							</div>
 							<div>
 								<label htmlFor="faculty">Faculty</label>
-								<input id="faculty" type="text" />
+								<select
+									name="faculty"
+									id="faculty"
+									value={faculty}
+									onChange={(e) => setFaculty(e.target.value)}
+								>
+									<option value="">Select faculty</option>
+									<option value="Natural science">
+										Natural science
+									</option>
+									<option value="Management science">
+										Management science
+									</option>
+									<option value="Law">Law</option>
+									<option value="Social science">
+										Social science
+									</option>
+								</select>
 							</div>
 							<div className="password">
 								<label htmlFor="password">Password</label>
 								<input
 									type={showPassword ? "text" : "password"}
 									id="password"
+									value={password}
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
 								/>
 								<span
 									onClick={() =>
@@ -85,7 +211,7 @@ const page = () => {
 					</form>
 				</div>
 				<div className="form-container sign-in">
-					<form>
+					<form onSubmit={submitLoginHandler}>
 						<Link href="/">
 							<img
 								src="./logo-primary.png"
@@ -105,15 +231,27 @@ const page = () => {
 							</strong>
 						</p>
 						<div className="form">
+							{showError && <DangerAlert message={showError} />}
 							<div>
-								<label htmlFor="email">Email address</label>
-								<input id="email" type="email" />
+								<label htmlFor="login-email">
+									Email address
+								</label>
+								<input
+									id="login-email"
+									type="email"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+								/>
 							</div>
 							<div className="password">
-								<label htmlFor="password">Password</label>
+								<label htmlFor="login-password">Password</label>
 								<input
 									type={showPassword ? "text" : "password"}
-									id="password"
+									id="login-password"
+									value={password}
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
 								/>
 								<span
 									onClick={() =>
@@ -145,9 +283,10 @@ const page = () => {
 								Already have an account? Sign in now
 							</p>
 							<button
-								onClick={() =>
-									setshowRegisterForm(!showRegisterForm)
-								}
+								onClick={() => {
+									setshowRegisterForm(!showRegisterForm);
+									setShowError(null);
+								}}
 								className="btn btn-white-outline hidden"
 								id="login"
 							>
@@ -161,9 +300,10 @@ const page = () => {
 								now
 							</p>
 							<button
-								onClick={() =>
-									setshowRegisterForm(!showRegisterForm)
-								}
+								onClick={() => {
+									setshowRegisterForm(!showRegisterForm);
+									setShowError(null);
+								}}
 								className="btn btn-white-outline hidden"
 								id="register"
 							>

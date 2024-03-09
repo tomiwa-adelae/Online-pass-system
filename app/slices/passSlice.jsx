@@ -22,10 +22,11 @@ const passSlice = createSlice({
 		clearNewPass: (state, action) => {
 			state.newPass = null;
 		},
+		resetPasses: (state) => (state = initialState),
 	},
 });
 
-export const { getPasses, getPassById, createPass, clearNewPass } =
+export const { getPasses, getPassById, createPass, clearNewPass, resetPasses } =
 	passSlice.actions;
 
 export default passSlice.reducer;

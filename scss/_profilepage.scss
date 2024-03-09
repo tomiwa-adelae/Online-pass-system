@@ -15,11 +15,55 @@
 			cursor: pointer;
 		}
 
-		div {
+		.buttons {
 			margin-top: 2rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+
+			.menu {
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				// wid
+				// width: ;
+
+				.dropdown {
+					// display: none;
+					position: absolute;
+					top: 100%;
+
+					left: 100%;
+					background-color: $white-color;
+					border-radius: 20px;
+					overflow: hidden;
+					border: 2px dotted $grey-color;
+					width: 250px;
+					display: none;
+
+					li {
+						padding: 1.2rem 2rem;
+						text-align: left;
+						@include transition();
+
+						&:hover {
+							background-color: $light-grey-color;
+						}
+					}
+
+					.logout {
+						border-top: 2px dotted $grey-color;
+						color: $danger-color;
+
+						&:hover {
+							background-color: $danger-color;
+							color: $white-color;
+						}
+					}
+				}
+				// display: none;
+			}
 		}
 	}
 

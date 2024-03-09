@@ -4,16 +4,11 @@ import Header from "@/components/Header";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { PiUserCircleThin } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	useUpdateUserMutation,
-	useUploadImageMutation,
-} from "../slices/userApiSlice";
+import { useUpdateUserMutation } from "../slices/userApiSlice";
 import { DangerAlert, SuccessAlert } from "@/components/AlertMessage";
 import { setCredentials } from "../slices/authSlice";
 import Loader from "@/components/Loader";
-import axios from "axios";
 
 const page = () => {
 	const router = useRouter();
@@ -62,7 +57,6 @@ const page = () => {
 				parentPhoneNumber,
 			}).unwrap();
 			dispatch(setCredentials({ ...res }));
-			// router.push("/dashboard");
 
 			setShowSuccess("Profile successfully updated!");
 		} catch (error) {

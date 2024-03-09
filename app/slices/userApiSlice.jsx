@@ -2,7 +2,6 @@
 
 import { apiSlice } from "./apiSlice";
 const USERS_URL = "/api/users";
-const UPLOAD_URL = "/api/uploads";
 
 export const userApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
@@ -33,10 +32,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
 				body: data,
 			}),
 		}),
-		uploadImage: builder.mutation({
+		updatePassword: builder.mutation({
 			query: (data) => ({
-				url: `/api/uploads`,
-				method: "POST",
+				url: `${USERS_URL}/password`,
+				method: "PUT",
 				body: data,
 			}),
 		}),
@@ -48,5 +47,5 @@ export const {
 	useRegisterMutation,
 	useLogoutMutation,
 	useUpdateUserMutation,
-	useUploadImageMutation,
+	useUpdatePasswordMutation,
 } = userApiSlice;

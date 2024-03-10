@@ -79,7 +79,7 @@ const page = () => {
 	return (
 		<div className="loginpage">
 			{isLoading && <Loader />}
-			{/* {loadingRegister && <LoadingPage />} */}
+			{loadingRegister && <Loader />}
 
 			<div
 				className={
@@ -102,9 +102,16 @@ const page = () => {
 						<p>
 							Already have an account?{" "}
 							<strong
-								onClick={() =>
-									setshowRegisterForm(!showRegisterForm)
-								}
+								onClick={() => {
+									setshowRegisterForm(!showRegisterForm);
+									setShowError(null);
+									setName("");
+									setEmail("");
+									setMatricNumber("");
+									setDepartment("");
+									setFaculty("");
+									setPassword("");
+								}}
 							>
 								Sign in
 							</strong>
@@ -223,9 +230,16 @@ const page = () => {
 						<p>
 							New user?{" "}
 							<strong
-								onClick={() =>
-									setshowRegisterForm(!showRegisterForm)
-								}
+								onClick={() => {
+									setshowRegisterForm(!showRegisterForm);
+									setShowError(null);
+									setName("");
+									setEmail("");
+									setMatricNumber("");
+									setDepartment("");
+									setFaculty("");
+									setPassword("");
+								}}
 							>
 								Create an account
 							</strong>
@@ -286,6 +300,12 @@ const page = () => {
 								onClick={() => {
 									setshowRegisterForm(!showRegisterForm);
 									setShowError(null);
+									setName("");
+									setEmail("");
+									setMatricNumber("");
+									setDepartment("");
+									setFaculty("");
+									setPassword("");
 								}}
 								className="btn btn-white-outline hidden"
 								id="login"
@@ -303,6 +323,12 @@ const page = () => {
 								onClick={() => {
 									setshowRegisterForm(!showRegisterForm);
 									setShowError(null);
+									setName("");
+									setEmail("");
+									setMatricNumber("");
+									setDepartment("");
+									setFaculty("");
+									setPassword("");
 								}}
 								className="btn btn-white-outline hidden"
 								id="register"

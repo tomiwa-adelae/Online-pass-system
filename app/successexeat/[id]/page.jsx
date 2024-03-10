@@ -7,6 +7,7 @@ import { CiCircleList, CiUser } from "react-icons/ci";
 import { FiCheckCircle } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useParams } from "next/navigation";
+import Header from "@/components/Header";
 
 const page = () => {
 	const { id } = useParams();
@@ -25,7 +26,8 @@ const page = () => {
 
 	return (
 		<div className="successexeatpage">
-			<header>
+			<Header />
+			{/* <header>
 				<div className="container">
 					<div className="logo">
 						<Link href="/">
@@ -50,7 +52,7 @@ const page = () => {
 						</Link>
 					</nav>
 				</div>
-			</header>
+			</header> */}
 			<div className="container">
 				<div className="content">
 					<h4>

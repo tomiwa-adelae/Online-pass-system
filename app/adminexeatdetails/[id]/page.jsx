@@ -1,15 +1,19 @@
 "use client";
-import { usePassDetailsMutation } from "@/app/slices/passApiSlice";
+import {
+	useAdminApprovePassMutation,
+	useAdminRejectPassMutation,
+	usePassDetailsMutation,
+} from "@/app/slices/passApiSlice";
+import { getPassById } from "@/app/slices/passSlice";
+import { DangerAlert, SuccessAlert } from "@/components/AlertMessage";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Loader from "@/components/Loader";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { CiCircleList, CiUser } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
-import { getPassById } from "@/app/slices/passSlice";
-import { useParams } from "next/navigation";
-import Loader from "@/components/Loader";
-import Header from "@/components/Header";
 
 const page = () => {
 	const { id } = useParams();
@@ -17,12 +21,19 @@ const page = () => {
 	const router = useRouter();
 
 	const [user, setUser] = useState(null);
+	const [showError, setShowError] = useState(null);
+	const [showSuccess, setShowSuccess] = useState(null);
 
 	const { userInfo } = useSelector((state) => state.auth);
 
 	const { pass } = useSelector((state) => state.pass);
 
 	const [passDetails, { isLoading }] = usePassDetailsMutation();
+
+	const [adminApprovePass, { isLoading: approvePassLoading }] =
+		useAdminApprovePassMutation();
+	const [adminRejectPass, { isLoading: rejectPassLoading }] =
+		useAdminRejectPassMutation();
 
 	useEffect(() => {
 		if (!userInfo) {
@@ -42,36 +53,36 @@ const page = () => {
 		getPassDetails();
 	}, [userInfo, router]);
 
-	return (
-		<div className="exeatdetailspage">
-			{isLoading && <Loader />}
-			<Header />
-			{/* <header>
-				<div className="container">
-					<div className="logo">
-						<Link href="/">
-							<img
-								src="../../passify-logo.png"
-								alt="Passify with the P as the logo"
-							/>
-						</Link>
-					</div>
+	const approveHandler = async () => {
+		try {
+			const res = await adminApprovePass(id);
 
-					<nav>
-						<Link href="../../history">
-							<CiCircleList />
-							<span>History</span>
-						</Link>
-						<Link href="../../profile">
-							<CiUser />
-							<span>{user?.name}</span>
-						</Link>
-						<Link href="../../getexeat">
-							<div className="btn btn-primary">Get Pass</div>
-						</Link>
-					</nav>
-				</div>
-			</header> */}
+			dispatch(getPassById(res));
+
+			setShowSuccess("Request successfully approved!");
+		} catch (error) {
+			setShowError(error.data.message);
+		}
+	};
+
+	const rejectHandler = async () => {
+		try {
+			const res = await adminRejectPass(id);
+
+			dispatch(getPassById(res));
+
+			setShowSuccess("Request successfully rejected!");
+		} catch (error) {
+			setShowError(error.data.message);
+		}
+	};
+
+	return (
+		<div className="adminexeatdetailspage">
+			{isLoading && <Loader />}
+			{approvePassLoading && <Loader />}
+			{rejectPassLoading && <Loader />}
+			<Header />
 			<div className="container">
 				<div className="content">
 					<div className="details">
@@ -151,16 +162,34 @@ const page = () => {
 								</h6>
 							</li>
 						</ul>
-						{pass?.status === "Pending" ? null : (
-							<div>
-								<button className="btn btn-grey-outline">
-									Download as PDF
-								</button>
-								<button className="btn btn-primary">
-									Download as Image
-								</button>
-							</div>
-						)}
+
+						<div>
+							{pass?.status === "Pending" ? (
+								<div>
+									<button
+										onClick={rejectHandler}
+										className="btn btn-grey-outline"
+									>
+										Reject request
+									</button>
+									<button
+										onClick={approveHandler}
+										className="btn btn-primary"
+									>
+										Approve request
+									</button>
+								</div>
+							) : (
+								<div>
+									<button className="btn btn-grey-outline">
+										Download as PDF
+									</button>
+									<button className="btn btn-primary">
+										Download as Image
+									</button>
+								</div>
+							)}
+						</div>
 					</div>
 					<div className="status">
 						{pass?.status === "Pending" ? (
@@ -181,6 +210,8 @@ const page = () => {
 						) : null}
 					</div>
 				</div>
+				{showError && <DangerAlert message={showError} />}
+				{showSuccess && <SuccessAlert message={showSuccess} />}
 			</div>
 			<Footer />
 		</div>

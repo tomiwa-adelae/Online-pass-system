@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLogoutMutation } from "../slices/userApiSlice";
 import { logout } from "../slices/authSlice";
 import { resetPasses } from "../slices/passSlice";
+import AdminControls from "@/components/AdminControl";
 
 const page = () => {
 	const router = useRouter();
@@ -99,7 +100,7 @@ const page = () => {
 					</div>
 				</div>
 				<div className="line"></div>
-				<RecentHistory />
+				{user?.isAdmin ? <AdminControls /> : <RecentHistory />}
 			</div>
 			<Footer />
 		</div>

@@ -70,10 +70,13 @@
 				label {
 					font-size: 0.7rem;
 				}
+
+				font-family: "__Montserrat_8cc72f",
+					"__Montserrat_Fallback_8cc72f";
 				input,
 				select {
-					font-family: "__Plus_Jakarta_Sans_65517a",
-						"__Plus_Jakarta_Sans_Fallback_65517a";
+					font-family: "__Montserrat_8cc72f",
+						"__Montserrat_Fallback_8cc72f";
 					width: 100%;
 					padding: 0.1rem 0 0.3rem 0;
 					font-weight: bold;

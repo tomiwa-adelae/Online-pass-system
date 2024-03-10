@@ -3,11 +3,19 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { LiaHourglassStartSolid } from "react-icons/lia";
 import Link from "next/link";
 
-const History = ({ pass }) => {
+const History = ({ pass, admin }) => {
 	return (
 		<div className="history">
 			<div className="details">
 				<ul>
+					{admin && (
+						<li>
+							<h6>
+								<strong>Name:</strong>
+								{pass.name}
+							</h6>
+						</li>
+					)}
 					<li>
 						<h6>
 							<strong>Location:</strong>
@@ -28,7 +36,13 @@ const History = ({ pass }) => {
 					</li>
 				</ul>
 				<div>
-					<Link href={`/exeatdetails/${pass._id}`}>
+					<Link
+						href={
+							admin
+								? `/adminexeatdetails/${pass._id}`
+								: `/exeatdetails/${pass._id}`
+						}
+					>
 						<button className="btn btn-primary">
 							View details
 						</button>

@@ -39,6 +39,18 @@ export const userApiSlice = apiSlice.injectEndpoints({
 				body: data,
 			}),
 		}),
+		getAdminUsers: builder.mutation({
+			query: () => ({
+				url: `${USERS_URL}/`,
+				method: "GET",
+			}),
+		}),
+		getAdminUser: builder.mutation({
+			query: (id) => ({
+				url: `${USERS_URL}/${id}`,
+				method: "GET",
+			}),
+		}),
 	}),
 });
 
@@ -48,4 +60,6 @@ export const {
 	useLogoutMutation,
 	useUpdateUserMutation,
 	useUpdatePasswordMutation,
+	useGetAdminUsersMutation,
+	useGetAdminUserMutation,
 } = userApiSlice;

@@ -6,13 +6,16 @@ import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { useAdminPendingPassesMutation } from "../slices/passApiSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAdminPendingPasses } from "../slices/passSlice";
 import Loader from "@/components/Loader";
+import { InfoAlert } from "@/components/AlertMessage";
 
 const page = () => {
 	const dispatch = useDispatch();
 	const router = useRouter();
+
+	const [search, setSearch] = useState("");
 
 	const { userInfo } = useSelector((state) => state.auth);
 
@@ -44,10 +47,37 @@ const page = () => {
 				<div className="content">
 					<div className="head">
 						<h4>Pending requests</h4>
-						<form>
+						<form
+							onSubmit={(e) => {
+								e.preventDefault();
+							}}
+						>
 							<div>
 								<label htmlFor="search">Search</label>
-								<input type="text" id="search" />
+								<input
+									type="text"
+									id="search"
+									value={search}
+									onChange={async (e) => {
+										setSearch(e.target.value);
+
+										if (search !== "") {
+											try {
+												const res =
+													await adminPendingPasses(
+														search
+													);
+												dispatch(
+													getAdminPendingPasses(
+														res.data
+													)
+												);
+											} catch (error) {
+												return;
+											}
+										}
+									}}
+								/>
 								<CiSearch />
 							</div>
 						</form>
@@ -56,6 +86,10 @@ const page = () => {
 						{pendingAdminPasses.map((pass) => (
 							<History key={pass._id} pass={pass} admin={true} />
 						))}
+
+						{pendingAdminPasses.length === 0 && (
+							<InfoAlert message={"No request to display!"} />
+						)}
 					</div>
 				</div>
 			</div>

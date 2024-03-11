@@ -15,7 +15,7 @@ const Student = ({ user }) => {
 					<li>
 						<h6>
 							<strong>Email address:</strong>
-							{user.address}
+							{user.email}
 						</h6>
 					</li>
 					<li>

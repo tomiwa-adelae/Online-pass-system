@@ -6,7 +6,7 @@ import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { useAllPassesMutation } from "../slices/passApiSlice";
 import { getPasses } from "../slices/passSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Loader from "@/components/Loader";
 import { useRouter } from "next/navigation";
 import { InfoAlert } from "@/components/AlertMessage";
@@ -14,6 +14,8 @@ import { InfoAlert } from "@/components/AlertMessage";
 const page = () => {
 	const dispatch = useDispatch();
 	const router = useRouter();
+
+	const [search, setSearch] = useState("");
 
 	const { passes } = useSelector((state) => state.pass);
 
@@ -28,7 +30,7 @@ const page = () => {
 		async function fetchPasses() {
 			try {
 				const res = await allPasses();
-				dispatch(getPasses(res.data.slice(0, 3)));
+				dispatch(getPasses(res.data));
 			} catch (error) {
 				return;
 			}
@@ -44,10 +46,32 @@ const page = () => {
 				<div className="content">
 					<div className="head">
 						<h4>History</h4>
-						<form>
+						<form
+							onSubmit={(e) => {
+								e.preventDefault();
+							}}
+						>
 							<div>
 								<label htmlFor="search">Search</label>
-								<input type="text" id="search" />
+								<input
+									type="text"
+									id="search"
+									value={search}
+									onChange={async (e) => {
+										setSearch(e.target.value);
+
+										if (search !== "") {
+											try {
+												const res = await allPasses(
+													search
+												);
+												dispatch(getPasses(res.data));
+											} catch (error) {
+												return;
+											}
+										}
+									}}
+								/>
 								<CiSearch />
 							</div>
 						</form>

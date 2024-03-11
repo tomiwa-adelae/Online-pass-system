@@ -6,8 +6,8 @@ const PASS_URL = "/api/passes";
 export const passApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		allPasses: builder.mutation({
-			query: () => ({
-				url: `${PASS_URL}/mine`,
+			query: (keyword = "") => ({
+				url: `${PASS_URL}/mine?keyword=${keyword}`,
 				method: "GET",
 			}),
 		}),
@@ -25,26 +25,26 @@ export const passApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 		adminAllPasses: builder.mutation({
-			query: () => ({
-				url: `${PASS_URL}`,
+			query: (keyword = "") => ({
+				url: `${PASS_URL}?keyword=${keyword}`,
 				method: "GET",
 			}),
 		}),
 		adminApprovedPasses: builder.mutation({
-			query: () => ({
-				url: `${PASS_URL}/approvedPasses`,
+			query: (keyword = "") => ({
+				url: `${PASS_URL}/approvedPasses?keyword=${keyword}`,
 				method: "GET",
 			}),
 		}),
 		adminRejectedPasses: builder.mutation({
-			query: () => ({
-				url: `${PASS_URL}/rejectedPasses`,
+			query: (keyword = "") => ({
+				url: `${PASS_URL}/rejectedPasses?keyword=${keyword}`,
 				method: "GET",
 			}),
 		}),
 		adminPendingPasses: builder.mutation({
-			query: () => ({
-				url: `${PASS_URL}/pendingPasses`,
+			query: (keyword = "") => ({
+				url: `${PASS_URL}/pendingPasses?keyword=${keyword}`,
 				method: "GET",
 			}),
 		}),

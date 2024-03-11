@@ -40,8 +40,8 @@ export const userApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 		getAdminUsers: builder.mutation({
-			query: () => ({
-				url: `${USERS_URL}/`,
+			query: (keyword = "") => ({
+				url: `${USERS_URL}/?keyword=${keyword}`,
 				method: "GET",
 			}),
 		}),

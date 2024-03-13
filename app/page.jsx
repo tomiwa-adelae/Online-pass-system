@@ -10,7 +10,7 @@ const montaguSlab = Montagu_Slab({
 const Home = () => {
 	return (
 		<div className="homepage">
-			<header>
+			<div className="header">
 				<div className="logo">
 					<Link href="/">
 						<img
@@ -22,7 +22,7 @@ const Home = () => {
 				<Link href="./auth" className="btn btn-white">
 					Join
 				</Link>
-			</header>
+			</div>
 			<main>
 				<div className="container">
 					<h4>Vacation is here!</h4>

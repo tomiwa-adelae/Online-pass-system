@@ -2,7 +2,6 @@
 	.user-head {
 		padding: 3rem 0;
 		text-align: center;
-		// background-color: bisque;
 		.user {
 			font-size: 10rem;
 			margin-bottom: 1rem;
@@ -26,11 +25,8 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				// wid
-				// width: ;
 
 				.dropdown {
-					// display: none;
 					position: absolute;
 					top: 100%;
 
@@ -62,7 +58,6 @@
 						}
 					}
 				}
-				// display: none;
 			}
 		}
 	}

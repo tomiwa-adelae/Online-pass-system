@@ -1,0 +1,643 @@
+@media (max-width: 880px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	h2 {
+		font-size: 3.5rem;
+	}
+
+	h3 {
+		font-size: 2.5rem;
+	}
+
+	h4 {
+		font-size: 1.5rem;
+	}
+
+	h5 {
+		font-size: 0.9rem;
+	}
+
+	h6 {
+		font-size: 0.7rem;
+	}
+
+	body {
+		font-size: 12px;
+	}
+
+	header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 80px;
+		width: 100%;
+		background-color: $white-color;
+		z-index: 20;
+
+		.container {
+			width: 90%;
+		}
+
+		.links {
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-direction: column;
+			position: fixed;
+			top: 80px;
+			right: -100%;
+			width: 50%;
+			height: 100vh;
+			background-color: $light-grey-color;
+			z-index: 4;
+			padding-top: 2rem;
+			border-left: 2px dotted $primary-color;
+			box-shadow: rgba($primary-color, 0.24) 0px 3px 8px;
+
+			.admin {
+				margin-left: 1rem;
+				width: 90%;
+				margin: 0.5rem auto;
+			}
+
+			.admin-links {
+				display: flex;
+			}
+
+			a {
+				justify-content: flex-start;
+				border: 2px dotted $primary-color;
+				border-radius: 10px;
+				width: 90%;
+				padding: 1rem;
+				margin-left: 0rem;
+				margin: 0.5rem auto;
+
+				&:hover {
+					background-color: $light-color;
+				}
+			}
+
+			&.open {
+				right: 0;
+			}
+			.get-exeat {
+				border: none;
+				padding: 0;
+
+				div {
+					width: 100%;
+				}
+
+				&:hover {
+					background-color: transparent;
+				}
+			}
+		}
+
+		.burger {
+			display: block;
+		}
+	}
+
+	.btn {
+		font-size: 0.8rem;
+	}
+
+	.line {
+		background-color: $light-grey-color;
+		padding: 1px 0;
+		width: 80%;
+		margin: 0 auto;
+		border-radius: $radius;
+	}
+
+	.dashboardpage,
+	.historypage,
+	.getexeatpage,
+	.successexeatpage,
+	.exeatdetailspage,
+	.profilepage,
+	.editprofilepage,
+	.changepasswordpage,
+	.adminallrequestspage,
+	.adminallstudentspage,
+	.adminapprovedrequestspage,
+	.adminrejectedrequestspage,
+	.adminexeatdetailspage,
+	.adminpendingrequestspage,
+	.adminstudentpage {
+		margin-top: 80px;
+		padding-top: 0.5rem;
+	}
+
+	.homepage {
+		.header {
+			.logo {
+				width: 120px;
+				min-width: 120px;
+				height: 40px;
+				min-height: 40px;
+			}
+		}
+
+		main {
+			.intro {
+				font-size: 0.8rem;
+			}
+		}
+	}
+
+	.loginpage {
+		.page-container {
+			width: 75%;
+
+			.logo {
+				width: 80px;
+				height: 20px;
+			}
+		}
+
+		.sign-in {
+			width: 100%;
+
+			h4 {
+				margin: 1rem 0;
+			}
+		}
+
+		.page-container.active .sign-in {
+			transform: translateX(0%);
+		}
+
+		.sign-up {
+			width: 100%;
+
+			h4 {
+				margin: 1rem 0;
+			}
+		}
+
+		.page-container.active .sign-up {
+			transform: translateX(0%);
+		}
+
+		.toggle-container {
+			z-index: -1000;
+			display: none;
+		}
+	}
+
+	.resetpasswordpage {
+		.page-container {
+			width: 75%;
+
+			.logo {
+				width: 80px;
+				height: 20px;
+			}
+		}
+
+		.reset-password {
+			width: 100%;
+
+			h4 {
+				margin: 1rem 0;
+			}
+		}
+
+		.page-container.active .reset-password {
+			transform: translateX(0%);
+		}
+
+		.update-password {
+			width: 100%;
+		}
+
+		.page-container.active .update-password {
+			transform: translateX(0%);
+		}
+
+		.toggle-container {
+			z-index: -1000;
+			display: none;
+		}
+	}
+
+	.updatepasswordpage {
+		.page-container {
+			width: 75%;
+
+			.logo {
+				width: 80px;
+				height: 20px;
+			}
+		}
+
+		.update-password {
+			width: 100%;
+
+			h4 {
+				margin: 1rem 0;
+			}
+		}
+
+		.page-container.active .update-password {
+			transform: translateX(0%);
+		}
+
+		.successfully {
+			width: 100%;
+		}
+
+		.page-container.active .successfully {
+			transform: translateX(0%);
+		}
+
+		.toggle-container {
+			z-index: -1000;
+			display: none;
+		}
+	}
+
+	.count-down-section {
+		.intro {
+			svg {
+				font-size: 1.5rem;
+			}
+		}
+
+		.count-down {
+			width: 100%;
+
+			div {
+				padding: 1rem;
+
+				span {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
+
+	.history {
+		padding: 1.5rem;
+
+		.status {
+			svg {
+				font-size: 3.5rem;
+			}
+		}
+	}
+
+	.student {
+		padding: 1.5rem;
+
+		.icon {
+			svg {
+				font-size: 3.5rem;
+			}
+		}
+	}
+
+	.successexeatpage {
+		.content {
+			h4 {
+				svg {
+					font-size: 3.3rem;
+				}
+			}
+
+			p {
+				width: 100%;
+			}
+		}
+	}
+
+	.exeatdetailspage {
+		.content {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.historypage {
+		.content {
+			.head {
+				grid-template-columns: 1fr 1fr;
+
+				form {
+					div {
+						svg {
+							font-size: 1.2rem;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.profilepage {
+		.user-head {
+			.user {
+				font-size: 7rem;
+			}
+
+			.buttons {
+				.menu {
+					.dropdown {
+						top: 150%;
+						left: -250%;
+						width: 250px;
+					}
+				}
+			}
+		}
+	}
+
+	.adminallrequestspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	}
+
+	.adminallstudentspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	}
+
+	.adminapprovedrequestspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	}
+
+	.adminexeatdetailspage {
+		.content {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.adminpendingrequestspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	}
+
+	.adminrejectedrequestspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	}
+
+	.adminstudentpage {
+		.user-head {
+			.user {
+				font-size: 7rem;
+			}
+		}
+	}
+}
+
+@media (max-width: 680px) {
+	h1 {
+		font-size: 3.5rem;
+	}
+
+	h2 {
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 2rem;
+	}
+
+	h4 {
+		font-size: 1rem;
+	}
+
+	h5 {
+		font-size: 0.7rem;
+	}
+
+	h6 {
+		font-size: 0.7rem;
+	}
+
+	.container {
+		width: 95%;
+	}
+
+	.btn {
+		font-size: 0.7rem;
+
+		padding: 0.7rem 1.2rem;
+	}
+
+	header {
+		.links {
+			width: 100%;
+		}
+	}
+
+	.admincontrol-section {
+		.boxes {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.homepage {
+		.container {
+			width: 90%;
+		}
+	}
+
+	.loginpage {
+		.page-container {
+			width: 90%;
+		}
+
+		.line {
+			width: 100%;
+		}
+	}
+
+	.resetpasswordpage {
+		.page-container {
+			width: 90%;
+		}
+	}
+
+	.updatepasswordpage {
+		.page-container {
+			width: 90%;
+		}
+	}
+
+	.historypage {
+		.content {
+			.head {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+
+	.exeatdetailspage {
+		.content {
+			.status {
+				img {
+					width: 90%;
+					height: 200px;
+				}
+			}
+		}
+	}
+
+	.adminallrequestspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+
+	.adminallstudentspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+
+	.adminapprovedrequestspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+
+	.adminpendingrequestspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+
+	.adminrejectedrequestspage {
+		.content {
+			.head {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 2rem;
+	}
+
+	h4 {
+		font-size: 1rem;
+	}
+
+	h5 {
+		font-size: 0.7rem;
+	}
+
+	h6 {
+		font-size: 0.7rem;
+	}
+
+	.history {
+		padding: 1rem;
+
+		.status {
+			svg {
+				font-size: 3.5rem;
+			}
+		}
+	}
+
+	.student {
+		padding: 1rem;
+
+		.icon {
+			svg {
+				font-size: 3.5rem;
+			}
+		}
+	}
+
+	.homepage {
+		main {
+			h1 {
+				margin: 0.5rem 0;
+			}
+
+			.intro {
+				font-size: 0.7rem;
+			}
+		}
+	}
+
+	.loginpage {
+		.page-container {
+			width: 100%;
+			height: 100vh;
+			border-radius: 0;
+		}
+
+		.line {
+			width: 100%;
+		}
+	}
+
+	.resetpasswordpage {
+		.page-container {
+			width: 100%;
+			height: 100vh;
+			border-radius: 0;
+		}
+	}
+
+	.updatepasswordpage {
+		.page-container {
+			width: 100%;
+			height: 100vh;
+			border-radius: 0;
+		}
+	}
+
+	.exeatdetailspage {
+		.content {
+			.status {
+				img {
+					width: 90%;
+					height: 150px;
+				}
+			}
+		}
+	}
+}

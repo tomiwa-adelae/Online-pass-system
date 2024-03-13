@@ -64,6 +64,10 @@ h6 {
 	&-primary {
 		background-color: $primary-color;
 		color: $white-color;
+
+		&:hover {
+			background-color: lighten($primary-color, 10%);
+		}
 	}
 
 	&-white {
@@ -71,7 +75,7 @@ h6 {
 		color: $dark-color;
 
 		&:hover {
-			background-color: $light-color;
+			background-color: $light-grey-color;
 			color: $black-color;
 		}
 	}
@@ -104,7 +108,7 @@ h6 {
 		color: $primary-color;
 
 		&:hover {
-			background-color: $light-color;
+			background-color: $light-grey-color;
 			color: $primary-color;
 		}
 	}
@@ -113,7 +117,6 @@ h6 {
 .line {
 	background-color: $light-grey-color;
 	padding: 1px 0;
-	width: 60%;
 	margin: 0 auto;
 	border-radius: $radius;
 }
@@ -124,13 +127,11 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	// padding: 0 2rem;
 	height: 100%;
 
 	div {
-		// background-color: darksalmon;
 		width: 100%;
-		margin: 0.1rem 0;
+		margin: 0.5rem 0;
 		label {
 			font-size: 0.7rem;
 		}
@@ -195,7 +196,6 @@ form {
 
 // Alert
 .alert {
-	// background-color: cornflowerblue;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;

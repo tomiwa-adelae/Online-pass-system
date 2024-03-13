@@ -12,15 +12,12 @@
 @import "profilepage";
 @import "editprofilepage";
 @import "changepasswordpage";
-@import "admindashboardpage";
 @import "adminallrequestspage";
 @import "adminapprovedrequestspage";
 @import "adminrejectedrequestspage";
 @import "adminpendingrequestspage";
 @import "adminallstudentspage";
 @import "adminexeatdetailspage";
-@import "adminprofilepage";
-@import "admineditprofilepage";
 @import "adminstudentpage";
 
 * {
@@ -41,7 +38,7 @@ body {
 }
 
 header {
-	border-bottom: 1px solid $primary-color;
+	border-bottom: 2px dotted $primary-color;
 	box-shadow: rgba($primary-color, 0.24) 0px 3px 8px;
 	.container {
 		display: flex;
@@ -51,7 +48,6 @@ header {
 		margin: 0 auto;
 		height: 80px;
 	}
-	// background-color: red;
 
 	.logo {
 		width: 150px;
@@ -66,13 +62,18 @@ header {
 		}
 	}
 
-	nav {
+	.links {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		@include transition();
 
 		.admin {
 			margin-left: 1rem;
+		}
+
+		.admin-links {
+			display: none;
 		}
 
 		a {
@@ -80,9 +81,7 @@ header {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			// background-color: greenyellow;
 			padding: 0.5rem;
-			// background-color: red;
 			margin-left: 1rem;
 			@include transition();
 
@@ -97,6 +96,23 @@ header {
 			}
 		}
 	}
+
+	.burger {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		display: none;
+
+		&-icon {
+			font-size: 2rem;
+			cursor: pointer;
+			@include transition();
+
+			&:hover {
+				color: $primary-color;
+			}
+		}
+	}
 }
 
 .count-down-section {
@@ -104,12 +120,10 @@ header {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		// background-color: grey;
 		margin-top: 3rem;
 
 		h4 {
 			margin: 0 1rem;
-			// text-transform: uppercase;
 		}
 
 		svg {
@@ -163,13 +177,11 @@ header {
 
 .recent-history {
 	h4 {
-		// text-transform: uppercase;
 		margin-bottom: 3rem;
 	}
 }
 
 .history {
-	// background-color: darkolivegreen;
 	border: 2px dotted $primary-color;
 	display: flex;
 	align-items: flex-start;
@@ -194,7 +206,6 @@ header {
 }
 
 .student {
-	// background-color: darkolivegreen;
 	border: 2px dotted $primary-color;
 	display: flex;
 	align-items: flex-start;
@@ -225,7 +236,6 @@ header {
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 2rem;
 		.box {
-			// margin: 2rem 0;
 			border-radius: 20px;
 			text-align: center;
 			border: 2px dotted $grey-color;
@@ -234,7 +244,6 @@ header {
 			svg {
 				display: block;
 				text-align: center;
-				// background-color: red;
 				width: 100%;
 				font-size: 3rem;
 			}
@@ -252,3 +261,5 @@ footer {
 	font-weight: bold;
 	padding: 2rem 0;
 }
+
+@import "mobile";

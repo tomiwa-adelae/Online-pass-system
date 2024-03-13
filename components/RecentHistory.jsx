@@ -11,8 +11,6 @@ import { InfoAlert } from "./AlertMessage";
 const RecentHistory = () => {
 	const dispatch = useDispatch();
 
-	// const [recentPasses, setRecentPasses] = useState([]);
-
 	const { passes } = useSelector((state) => state.pass);
 
 	const [allPasses, { isLoading }] = useAllPassesMutation();

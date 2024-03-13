@@ -5,11 +5,15 @@ import { CiCircleList, CiUser } from "react-icons/ci";
 import { RiDashboardLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { useParams } from "next/navigation";
+import { CiMenuFries } from "react-icons/ci";
+import { AiOutlineClose } from "react-icons/ai";
+import { IoIosPeople } from "react-icons/io";
 
 const Header = () => {
 	const { id } = useParams();
 
 	const [user, setUser] = useState(null);
+	const [openNav, setOpenNav] = useState(false);
 
 	const { userInfo } = useSelector((state) => state.auth);
 
@@ -17,7 +21,23 @@ const Header = () => {
 		if (userInfo) {
 			return setUser(userInfo);
 		}
-	}, [userInfo]);
+
+		const keyDownHandler = (event) => {
+			if (openNav && event.key === "Escape") {
+				event.preventDefault();
+
+				// 👇️ your logic here
+				setOpenNav(!openNav);
+			}
+		};
+
+		document.addEventListener("keydown", keyDownHandler);
+
+		// 👇️ clean up event listener
+		return () => {
+			document.removeEventListener("keydown", keyDownHandler);
+		};
+	}, [userInfo, openNav]);
 
 	return (
 		<header>
@@ -35,29 +55,114 @@ const Header = () => {
 					</Link>
 				</div>
 
-				<nav>
-					<Link href={id ? "../../dashboard" : "./dashboard"}>
+				<nav className={openNav ? "links open" : "links"}>
+					<Link
+						onClick={() => setOpenNav(!openNav)}
+						href={id ? "../../dashboard" : "./dashboard"}
+					>
 						<RiDashboardLine />
 						<span>Dashboard</span>
 					</Link>
 					{!user?.isAdmin && (
-						<Link href={id ? "../../history" : "./history"}>
+						<Link
+							onClick={() => setOpenNav(!openNav)}
+							href={id ? "../../history" : "./history"}
+						>
 							<CiCircleList />
 							<span>History</span>
 						</Link>
 					)}
-					<Link href={id ? "../../profile" : "./profile"}>
+					{user?.isAdmin ? (
+						<>
+							<Link
+								className="admin-links"
+								onClick={() => setOpenNav(!openNav)}
+								href={
+									id
+										? "../../adminallrequests"
+										: "./adminallrequests"
+								}
+							>
+								<CiCircleList />
+								<span>All requests</span>
+							</Link>
+							<Link
+								className="admin-links"
+								onClick={() => setOpenNav(!openNav)}
+								href={
+									id
+										? "../../adminapprovedrequests"
+										: "./adminapprovedrequests"
+								}
+							>
+								<CiCircleList />
+								<span>Approved requests</span>
+							</Link>
+							<Link
+								className="admin-links"
+								onClick={() => setOpenNav(!openNav)}
+								href={
+									id
+										? "../../adminrejectedrequests"
+										: "./adminrejectedrequests"
+								}
+							>
+								<CiCircleList />
+								<span>Rejected requests</span>
+							</Link>
+							<Link
+								className="admin-links"
+								onClick={() => setOpenNav(!openNav)}
+								href={
+									id
+										? "../../adminpendingrequests"
+										: "./adminpendingrequests"
+								}
+							>
+								<CiCircleList />
+								<span>Pending requests</span>
+							</Link>
+							<Link
+								className="admin-links"
+								onClick={() => setOpenNav(!openNav)}
+								href={
+									id
+										? "../../adminallstudents"
+										: "./adminallstudents"
+								}
+							>
+								<IoIosPeople />
+								<span>All students</span>
+							</Link>
+						</>
+					) : null}
+
+					<Link
+						onClick={() => setOpenNav(!openNav)}
+						href={id ? "../../profile" : "./profile"}
+					>
 						<CiUser />
 						<span>{user?.name}</span>
 					</Link>
 					{user?.isAdmin ? (
 						<div className="btn btn-primary admin">Admin</div>
 					) : (
-						<Link href={id ? "../../getexeat" : "./getexeat"}>
+						<Link
+							onClick={() => setOpenNav(!openNav)}
+							className="get-exeat"
+							href={id ? "../../getexeat" : "./getexeat"}
+						>
 							<div className="btn btn-primary">Get Pass</div>
 						</Link>
 					)}
 				</nav>
+				<div onClick={() => setOpenNav(!openNav)} className="burger">
+					{openNav ? (
+						<AiOutlineClose className="burger-icon" />
+					) : (
+						<CiMenuFries className="burger-icon" />
+					)}
+				</div>
 			</div>
 		</header>
 	);

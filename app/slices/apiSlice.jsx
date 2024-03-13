@@ -6,6 +6,7 @@ const baseQuery = fetchBaseQuery({
 	baseUrl: "https://passify-backend.onrender.com",
 	headers: {
 		"content-type": "application/json",
+		"Access-Control-Allow-Origin": "https://passify-backend.onrender.com",
 	},
 	credentials: "include",
 });

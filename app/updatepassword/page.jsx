@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import UpdatePassword from "./UpdatePassword";
 
 export const metadata = {
@@ -6,7 +7,11 @@ export const metadata = {
 };
 
 const page = () => {
-	return <UpdatePassword />;
+	return (
+		<Suspense fallback={<>Loading...</>}>
+			<UpdatePassword />
+		</Suspense>
+	);
 };
 
 export default page;

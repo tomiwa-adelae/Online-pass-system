@@ -79,7 +79,7 @@ const ResetPassword = () => {
 						<h4>Verifiy code</h4>
 						<p>
 							Enter the code we just sent to{" "}
-							<strong>{email}</strong>
+							<strong className="text-primary">{email}</strong>
 						</p>
 						<div className="form">
 							{showError && <DangerAlert message={showError} />}

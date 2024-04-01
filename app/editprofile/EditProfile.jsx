@@ -92,6 +92,7 @@ const EditProfile = () => {
 								type="email"
 								value={email}
 								readOnly={true}
+								disabled
 							/>
 						</div>
 						<div>

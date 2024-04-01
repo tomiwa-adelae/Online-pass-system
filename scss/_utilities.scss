@@ -116,6 +116,10 @@ h6 {
 			color: $primary-color;
 		}
 	}
+
+	&:disabled {
+		cursor: not-allowed;
+	}
 }
 
 .line {

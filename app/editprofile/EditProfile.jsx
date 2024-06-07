@@ -20,6 +20,7 @@ const EditProfile = () => {
 	const [department, setDepartment] = useState("");
 	const [faculty, setFaculty] = useState("");
 	const [address, setAddress] = useState("");
+	const [phoneNumber, setPhoneNumber] = useState("");
 	const [parentPhoneNumber, setParentPhoneNumber] = useState("");
 	const [isAdmin, setIsAdmin] = useState(null);
 	const [showError, setShowError] = useState(null);

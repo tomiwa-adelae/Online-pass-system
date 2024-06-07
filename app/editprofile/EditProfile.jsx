@@ -21,6 +21,7 @@ const EditProfile = () => {
 	const [faculty, setFaculty] = useState("");
 	const [address, setAddress] = useState("");
 	const [parentPhoneNumber, setParentPhoneNumber] = useState("");
+	const [isAdmin, setIsAdmin] = useState(null);
 	const [showError, setShowError] = useState(null);
 	const [showSuccess, setShowSuccess] = useState(null);
 
@@ -35,7 +36,9 @@ const EditProfile = () => {
 			setDepartment(userInfo.department || "");
 			setFaculty(userInfo.faculty || "");
 			setAddress(userInfo.address || "");
+			setPhoneNumber(userInfo.phoneNumber || "");
 			setParentPhoneNumber(userInfo.parentPhoneNumber || "");
+			setIsAdmin(userInfo.isAdmin || null);
 		} else {
 			return router.push("/auth");
 		}
@@ -55,6 +58,7 @@ const EditProfile = () => {
 				faculty,
 				address,
 				parentPhoneNumber,
+				phoneNumber,
 			}).unwrap();
 			dispatch(setCredentials({ ...res }));
 
@@ -85,18 +89,26 @@ const EditProfile = () => {
 								onChange={(e) => setName(e.target.value)}
 							/>
 						</div>
-						{!userInfo.isAdmin && (
+						<div>
+							<label htmlFor="email">Email address</label>
+							<input
+								id="email"
+								type="email"
+								value={email}
+								onChange={() => setEmail(e.target.value)}
+							/>
+						</div>
+						<div>
+							<label htmlFor="phoneNumber">Phone number</label>
+							<input
+								id="phoneNumber"
+								type="text"
+								value={phoneNumber}
+								onChange={(e) => setPhoneNumber(e.target.value)}
+							/>
+						</div>
+						{!isAdmin && (
 							<>
-								<div>
-									<label htmlFor="email">Email address</label>
-									<input
-										id="email"
-										type="email"
-										value={email}
-										readOnly={true}
-										disabled
-									/>
-								</div>
 								<div>
 									<label htmlFor="matricNumber">
 										Matric number

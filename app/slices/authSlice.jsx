@@ -9,6 +9,7 @@ const initialState = {
 	adminUser: null,
 };
 
+
 const authSlice = createSlice({
 	name: "auth",
 	initialState,

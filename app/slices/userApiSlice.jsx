@@ -10,6 +10,9 @@ export const userApiSlice = apiSlice.injectEndpoints({
 				url: `${USERS_URL}/auth`,
 				method: "POST",
 				body: data,
+				headers: {
+					"x-auth-token": "",
+				},
 			}),
 		}),
 		logout: builder.mutation({
